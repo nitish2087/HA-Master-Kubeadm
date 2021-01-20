@@ -31,7 +31,7 @@ We will be using stacked-etcd cluster due to the reason of less complexity and s
 	 $ for i in m0 m1 m2 LB  
 	 do  
 	 ssh $i hostname  
-	 done
+	 done  
          ```  
 	
 3. Install a cloud-based TCP load balancer: (keep-alived / haproxy / kube-vip) (ref : [here](https://github.com/kubernetes/kubeadm/blob/master/docs/ha-considerations.md))  
