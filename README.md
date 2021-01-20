@@ -26,11 +26,13 @@ We will be using stacked-etcd cluster due to the reason of less complexity and s
 
 1. ssh to LB from console.sb with root privileges:  
 	> $ ssh root@LB  
-2. Check if all machines are reachable or not:    
-	> $ for i in m0 m1 m2 LB  
-	> do  
-	> ssh $i hostname  
-	> done  
+2. Check if all machines are reachable or not:  
+         ```
+	 $ for i in m0 m1 m2 LB  
+	 do  
+	 ssh $i hostname  
+	 done
+         ```  
 	
 3. Install a cloud-based TCP load balancer: (keep-alived / haproxy / kube-vip) (ref : [here](https://github.com/kubernetes/kubeadm/blob/master/docs/ha-considerations.md))  
    We will be using use haproxy here.  
