@@ -28,10 +28,10 @@ We will be using stacked-etcd cluster due to the reason of less complexity and s
 	> $ ssh root@LB  
 2. Check if all machines are reachable or not:  
          ```
-	         $ for i in m0 m1 m2 LB  
-	         do  
-	         ssh $i hostname  
-	         done  
+	 $ for i in m0 m1 m2 LB  
+	 do  
+	 ssh $i hostname  
+	 done  
          ```  
 	
 3. Install a cloud-based TCP load balancer: (keep-alived / haproxy / kube-vip) (ref : [here](https://github.com/kubernetes/kubeadm/blob/master/docs/ha-considerations.md))  
@@ -70,8 +70,8 @@ We will be using stacked-etcd cluster due to the reason of less complexity and s
 	- > 192.168.0.0/16 is default pod-network-cidr used in calico (will be using calico as an overlay nettwork)  
 	- > Save the output of above command producing three things:
 	  - To start using your cluster, you need to run the following as a regular user:  
-	  ```
-	          mkdir -p $HOME/.kube
+	  ```  
+	          mkdir -p $HOME/.kube  
 		  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 		  sudo chown $(id -u):$(id -g) $HOME/.kube/config
 	  ```
