@@ -71,7 +71,7 @@ We will be using stacked-etcd cluster due to the reason of less complexity and s
 	- > Save the output of above command producing three things:
 	  - To start using your cluster, you need to run the following as a regular user:  
 	  ```  
-	          mkdir -p $HOME/.kube  
+		  mkdir -p $HOME/.kube  
 		  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 		  sudo chown $(id -u):$(id -g) $HOME/.kube/config
 	  ```
