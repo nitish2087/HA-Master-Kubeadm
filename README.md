@@ -102,6 +102,6 @@ We will be using stacked-etcd cluster due to the reason of less complexity and s
 	- Create kube directory.  
 	- Copy kubeconfig file from loadbalancer to console:  
 		> $ scp LB: ~/.kube/config ~/.kube/mzcluster.config  
-	- Check nodes and pods active:  
+	- Check active nodes and pods:  
 		> $ kc1 get nodes  
 		> $ kc1 get pods -n kube-system
