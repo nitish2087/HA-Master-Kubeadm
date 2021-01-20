@@ -43,7 +43,7 @@ We will be using stacked-etcd cluster due to the reason of less complexity and s
 	      	   bind 0.0.0.0:6443
 	  	   mode tcp
    	   	   option tcplog
-   	   	   default_backend be-apiserver  
+   	   	   default-backend be-apiserver  
 		   backend be-apiserver
 		       mode tcp
 		       option tcplog
