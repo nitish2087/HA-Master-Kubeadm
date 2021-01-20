@@ -40,7 +40,7 @@ We will be using stacked-etcd cluster due to the reason of less complexity and s
 
 4. Configure haproxy for load-balancing with front-end and back-end servers:  
 	- Add below lines in /etc/haproxy/haproxy.config:  
-		 '''
+		 ```
 		 frontend fe-apiserver  
 	      	    bind 0.0.0.0:6443  
 	  	    mode tcp  
@@ -56,7 +56,7 @@ We will be using stacked-etcd cluster due to the reason of less complexity and s
 		           server mzmaster.sb 10.20.20.99:6443 check fall 3 rise 2
 		           server mzmaster1.sb 10.20.20.98:6443 check fall 3 rise 2
 		           server mzmaster2.sb 10.20.20.97:6443 check fall 3 rise 2  
-		 '''    
+		 ```    
 
 	- Restart haproxy and check status:  
 		> $ systemctl restart haproxy  
