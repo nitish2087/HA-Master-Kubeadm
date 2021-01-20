@@ -28,10 +28,10 @@ We will be using stacked-etcd cluster due to the reason of less complexity and s
 	> $ ssh root@LB  
 2. Check if all machines are reachable or not:  
 	'''  
-	$ for i in m0 m1 m2 LB  
-        do  
-	ssh $i hostname  
-        done  
+	    $ for i in m0 m1 m2 LB  
+            do  
+	    ssh $i hostname  
+            done  
 	'''
 
 3. Install a cloud-based TCP load balancer: (keep-alived / haproxy / kube-vip) (ref : [here](https://github.com/kubernetes/kubeadm/blob/master/docs/ha-considerations.md))  
@@ -41,22 +41,21 @@ We will be using stacked-etcd cluster due to the reason of less complexity and s
 4. Configure haproxy for load-balancing with front-end and back-end servers:  
 	- Add below lines in /etc/haproxy/haproxy.config:  
 	'''
-			frontend fe-apiserver
-	   	   	   bind 0.0.0.0:6443
-	   	  	   mode tcp
-	   	   	   option tcplog
-	   	   	   default_backend be-apiserver
+		frontend fe-apiserver
+	      	   bind 0.0.0.0:6443
+	  	   mode tcp
+   	   	   option tcplog
+   	   	   default_backend be-apiserver  
+		backend be-apiserver
+		   mode tcp
+		   option tcplog
+		   option tcp-check
+		   balance roundrobin
+		   default-server inter 10s downinter 5s rise 2 fall 2 slowstart 60s maxconn 250 maxqueue 256 weight 100
 
-			backend be-apiserver
-		   	   mode tcp
-		   	   option tcplog
-		   	   option tcp-check
-		   	   balance roundrobin
-		   	   default-server inter 10s downinter 5s rise 2 fall 2 slowstart 60s maxconn 250 maxqueue 256 weight 100
-
-		               server mzmaster.sb 10.20.20.99:6443 check fall 3 rise 2
-		               server mzmaster1.sb 10.20.20.98:6443 check fall 3 rise 2
-		               server mzmaster2.sb 10.20.20.97:6443 check fall 3 rise 2  
+		       server mzmaster.sb 10.20.20.99:6443 check fall 3 rise 2
+		       server mzmaster1.sb 10.20.20.98:6443 check fall 3 rise 2
+		       server mzmaster2.sb 10.20.20.97:6443 check fall 3 rise 2  
 	'''    
 
 	- Restart haproxy and check status:  
