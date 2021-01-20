@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Kubeadm is a tool that was created by Kubernetes community exactly for simplifying the Kubernetes installation and making this process easier. Previously Kubeadm was recommended only for creating small single master test clusters. But for the last year there were many improvements done on it and now we can use it for creating multi masters HA clusters also. Kubeadm documentation propose two main ways of cluster implementation, with stacked and external Etcd topology. ([Read here](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/))  
+Current sandbox installs a cluster of worker nodes along with one master node only using kubeadm tool provided by kubernetes. But in production, if master node is prone to failure then we would be required to have more than one master nodes to serve API server requests without any failure. The guide here explains the steps to install a multi-master node cluster using Kubeadm tool. All masters will be running individual etcd servers. Kubeadm documentation propose two main ways of cluster implementation, with stacked and external Etcd topology. ([Read here](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/))  
 We will be using stacked-etcd cluster due to the reason of less complexity and simpler to manage for replication.
 
 ## HA- Master Architecture
