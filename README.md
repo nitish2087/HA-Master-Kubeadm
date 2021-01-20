@@ -42,7 +42,7 @@ We will be using stacked-etcd cluster due to the reason of less complexity and s
 	- Add below lines in /etc/haproxy/haproxy.config:  
 		 ```
 		 frontend fe-apiserver  
-	      	    bind 0.0.0.0:6443  
+		    bind 0.0.0.0:6443  
 	  	    mode tcp  
    	   	    option tcplog  
    	   	    default_backend be-apiserver  
@@ -68,7 +68,7 @@ We will be using stacked-etcd cluster due to the reason of less complexity and s
 6. Initialize a control-plane uisng kubeadm init:  
 	- > $ kubeadm init --control-plane-endpoint "loadbalancer.sb:6443" --upload-certs --pod-network-cidr=192.168.0.0/16  
 	- > 192.168.0.0/16 is default pod-network-cidr used in calico (will be using calico as an overlay nettwork)  
-	- > Save the output of above command producing three things:
+	- Save the output of above command producing three things:
 	  - To start using your cluster, you need to run the following as a regular user:  
 	  ```  
 		  mkdir -p $HOME/.kube  
